@@ -23,15 +23,15 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', get_wiki_pattern()),
-    url(r'^notifications/', get_nyt_pattern())
+    url(r'^notifications/', get_nyt_pattern()),
 ]
 
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += patterns(
-        url(r'^media/(?P<path>.*)$',
-            'django.views.static.serve',
-            {'document_root': settings.MEDIA_ROOT,
-             }),
-    )
+    urlpatterns += patterns('',
+                            url(r'^media/(?P<path>.*)$',
+                                'django.views.static.serve',
+                                {'document_root': settings.MEDIA_ROOT,
+                                 }),
+                            )
 
